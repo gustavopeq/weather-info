@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Weather Info</string>
+    <string name="infoLabel">Info</string>
+    <string name="countryLabel">Country:</string>
+    <string name="cityLabel">City:</string>
 </resources>
