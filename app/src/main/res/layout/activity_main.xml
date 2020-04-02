@@ -8,17 +8,17 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/cityLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/cityLabel"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/infoButton"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="@+id/countryLabel"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/countryLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/countryLabel"
@@ -27,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/cityLabel" />
 
     <Button
         android:id="@+id/infoButton"
@@ -42,7 +42,7 @@
         app:layout_constraintVertical_bias="0.307" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/cityEditText"
         android:layout_width="267dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -50,12 +50,12 @@
         android:text="Vancouver"
         android:textAlignment="textStart"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintBottom_toBottomOf="@+id/cityLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView2" />
+        app:layout_constraintStart_toEndOf="@+id/cityLabel" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/countryEditText"
         android:layout_width="267dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -63,12 +63,12 @@
         android:text="BC"
         android:textAlignment="textStart"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintBottom_toBottomOf="@+id/countryLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView" />
+        app:layout_constraintStart_toEndOf="@+id/countryLabel" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/cityDescriptionLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="City:"
@@ -88,12 +88,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.321"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintStart_toEndOf="@+id/cityDescriptionLabel"
         app:layout_constraintTop_toBottomOf="@+id/infoButton"
         app:layout_constraintVertical_bias="0.184" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/weatherDescriptionLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Weather:"
@@ -113,12 +113,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.321"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintStart_toEndOf="@+id/weatherDescriptionLabel"
         app:layout_constraintTop_toBottomOf="@+id/infoButton"
         app:layout_constraintVertical_bias="0.281" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tempDescriptionLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Temperature:"
@@ -138,12 +138,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.238"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/tempDescriptionLabel"
         app:layout_constraintTop_toBottomOf="@+id/infoButton"
         app:layout_constraintVertical_bias="0.39" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/feelsLikeDescriptionLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Feels Like:"
@@ -163,7 +163,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.451"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintStart_toEndOf="@+id/feelsLikeDescriptionLabel"
         app:layout_constraintTop_toBottomOf="@+id/infoButton"
         app:layout_constraintVertical_bias="0.493" />
 
