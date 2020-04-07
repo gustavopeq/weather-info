@@ -74,6 +74,16 @@ class MainActivity : AppCompatActivity() {
                     weatherDescriptionTextView.text = "${responseWeather.weather[0].main} (${responseWeather.weather[0].description})"
                     tempDescriptionTextView.text = "${responseWeather.main.temp} C"
                     feelsLikeDescriptionTextView.text = "${responseWeather.main.feelsLike} C"
+
+                    when(responseWeather.weather[0].id)
+                    {
+                        in 200 .. 232 -> weatherIcon.setAnimation("thunderstorm.json")
+                        in 300 .. 531 -> weatherIcon.setAnimation("rain.json")
+                        in 600 .. 622 -> weatherIcon.setAnimation("snow.json")
+                        in 701 .. 781 -> weatherIcon.setAnimation("mist.json")
+                        in 801 .. 804 -> weatherIcon.setAnimation("cloudy.json")
+                        else -> weatherIcon.setAnimation("clearSky.json")
+                    }
                 }
             }
 
