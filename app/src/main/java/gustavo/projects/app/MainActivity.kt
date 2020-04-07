@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.airbnb.lottie.LottieAnimationView
 import gustavo.projects.app.model.OpenWeatherResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,6 +28,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tempDescriptionTextView: TextView
     private lateinit var feelsLikeDescriptionTextView: TextView
 
+    private lateinit var weatherIcon: LottieAnimationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -39,6 +42,8 @@ class MainActivity : AppCompatActivity() {
         this.feelsLikeDescriptionTextView = findViewById(R.id.FeelsLikeDescriptionTextView)
 
         val infoButton : Button = findViewById(R.id.infoButton)
+
+        this.weatherIcon = findViewById(R.id.weatherIcon)
 
         infoButton.setOnClickListener(View.OnClickListener { getWeather() })
 
