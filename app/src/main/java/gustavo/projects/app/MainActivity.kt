@@ -58,18 +58,19 @@ class MainActivity : AppCompatActivity() {
             .build()
 
         val service = retrofit.create(OpenWeatherInterface::class.java)
-        val call = service.getCurrentWeatherByCity(cityEditText.text.toString(), APP_KEY)
+        val concatenatedCityCountry = cityEditText.text.toString()+","+countryEditText.text.toString()
+        val call = service.getCurrentWeatherByCityAndCountry(concatenatedCityCountry, APP_KEY)
 
         call.enqueue(object : Callback<OpenWeatherResponse>{
             override fun onFailure(call: Call<OpenWeatherResponse>, t: Throwable) {
-                Toast.makeText(baseContext, t?.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(baseContext, t.message, Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
                 call: Call<OpenWeatherResponse>,
                 response: Response<OpenWeatherResponse>
             ) {
-                if(response?.code() == 200)
+                if(response.code() == 200)
                 {
                     val responseWeather = response.body()!!
 
