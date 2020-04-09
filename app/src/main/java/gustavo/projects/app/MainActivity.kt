@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.airbnb.lottie.LottieAnimationView
 import gustavo.projects.app.model.OpenWeatherResponse
 import retrofit2.Call
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var weatherDescriptionTextView: TextView
     private lateinit var tempDescriptionTextView: TextView
     private lateinit var feelsLikeDescriptionTextView: TextView
+    private lateinit var descriptionPanelLayout : ConstraintLayout
 
     private lateinit var weatherIcon: LottieAnimationView
 
@@ -38,8 +40,9 @@ class MainActivity : AppCompatActivity() {
         this.countryEditText = findViewById(R.id.countryEditText)
         this.cityDescriptionTextView = findViewById(R.id.cityDescriptionTextView)
         this.weatherDescriptionTextView = findViewById(R.id.weatherDescriptionTextView)
-        this.tempDescriptionTextView = findViewById(R.id.TempDescriptionTextView)
-        this.feelsLikeDescriptionTextView = findViewById(R.id.FeelsLikeDescriptionTextView)
+        this.tempDescriptionTextView = findViewById(R.id.tempDescriptionTextView)
+        this.feelsLikeDescriptionTextView = findViewById(R.id.feelsLikeDescriptionTextView)
+        this.descriptionPanelLayout = findViewById(R.id.descriptionPanelLayout)
 
         val infoButton : Button = findViewById(R.id.infoButton)
 
@@ -84,6 +87,8 @@ class MainActivity : AppCompatActivity() {
                         in 801 .. 804 -> weatherIcon.setAnimation("cloudy.json")
                         else -> weatherIcon.setAnimation("clearSky.json")
                     }
+
+                    descriptionPanelLayout.visibility = View.VISIBLE
                 }
             }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,188 +8,192 @@
     tools:context=".MainActivity">
 
 
-    <TextView
-        android:id="@+id/cityLabel"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/cityLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/cityLabel"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/countryLabel"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/cityEditText"
+            android:layout_width="267dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Vancouver"
+            android:textAlignment="textStart"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cityLabel"
+            app:layout_constraintStart_toEndOf="@+id/cityLabel" />
+
+        <TextView
+            android:id="@+id/countryLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/countryLabel"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cityLabel" />
+
+        <EditText
+            android:id="@+id/countryEditText"
+            android:layout_width="267dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="CA"
+            android:textAlignment="textStart"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/countryLabel"
+            app:layout_constraintStart_toEndOf="@+id/countryLabel" />
+
+        <Button
+            android:id="@+id/infoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/infoLabel"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/countryLabel" />
+
+        <!--    DESCRIPTION STARTS HERE-->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/descriptionPanelLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/cityLabel"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/infoButton"
-        app:layout_constraintEnd_toEndOf="@+id/countryLabel"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/cityEditText"
-        android:layout_width="267dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Vancouver"
-        android:textAlignment="textStart"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/cityLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintStart_toEndOf="@+id/cityLabel" />
-
-    <TextView
-        android:id="@+id/countryLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/countryLabel"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/infoButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityLabel" />
-
-    <EditText
-        android:id="@+id/countryEditText"
-        android:layout_width="267dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="CA"
-        android:textAlignment="textStart"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/countryLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintStart_toEndOf="@+id/countryLabel" />
-
-    <Button
-        android:id="@+id/infoButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/infoLabel"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.307" />
-
-<!--    DESCRIPTION STARTS HERE-->
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/weatherIcon"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:layout_constraintBottom_toTopOf="@+id/cityDescriptionLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/infoButton"
-        app:layout_constraintVertical_bias="0.463"
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="rain.json"
-        app:lottie_loop="true"
-        app:lottie_speed="1.25" />
-
-    <TextView
-        android:id="@+id/cityDescriptionLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="City:"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.082"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/infoButton"
-        app:layout_constraintVertical_bias="0.314" />
-
-    <TextView
-        android:id="@+id/cityDescriptionTextView"
-        android:layout_width="320dp"
-        android:layout_height="24dp"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/cityDescriptionLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintStart_toEndOf="@+id/cityDescriptionLabel"
-        app:layout_constraintTop_toTopOf="@+id/cityDescriptionLabel"
-        app:layout_constraintVertical_bias="0.19" />
-
-    <TextView
-        android:id="@+id/weatherDescriptionLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Weather:"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/cityDescriptionLabel"
-        app:layout_constraintTop_toBottomOf="@+id/cityDescriptionLabel"
-        app:layout_constraintVertical_bias="0.05" />
-
-    <TextView
-        android:id="@+id/weatherDescriptionTextView"
-        android:layout_width="290dp"
-        android:layout_height="24dp"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/weatherDescriptionLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintStart_toEndOf="@+id/weatherDescriptionLabel"
-        app:layout_constraintTop_toTopOf="@+id/weatherDescriptionLabel"
-        app:layout_constraintVertical_bias="0.281" />
+        android:visibility="gone">
 
 
-    <TextView
-        android:id="@+id/tempDescriptionLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Temperature:"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/cityDescriptionLabel"
-        app:layout_constraintTop_toBottomOf="@+id/weatherDescriptionLabel"
-        app:layout_constraintVertical_bias="0.05" />
+        <!--    DESCRIPTION STARTS HERE-->
 
-    <TextView
-        android:id="@+id/TempDescriptionTextView"
-        android:layout_width="250dp"
-        android:layout_height="24dp"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tempDescriptionLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintStart_toEndOf="@+id/tempDescriptionLabel"
-        app:layout_constraintTop_toTopOf="@+id/tempDescriptionLabel"
-        app:layout_constraintVertical_bias="0.367" />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/weatherIcon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="rain.json"
+            app:lottie_loop="true"
+            app:lottie_speed="1.25" />
 
-    <TextView
-        android:id="@+id/feelsLikeDescriptionLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Feels Like:"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/cityDescriptionLabel"
-        app:layout_constraintTop_toBottomOf="@+id/tempDescriptionLabel"
-        app:layout_constraintVertical_bias="0.05" />
+        <TextView
+            android:id="@+id/cityDescriptionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="City:"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weatherIcon" />
 
-    <TextView
-        android:id="@+id/FeelsLikeDescriptionTextView"
-        android:layout_width="278dp"
-        android:layout_height="24dp"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/feelsLikeDescriptionLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintStart_toEndOf="@+id/feelsLikeDescriptionLabel"
-        app:layout_constraintTop_toTopOf="@+id/feelsLikeDescriptionLabel"
-        app:layout_constraintVertical_bias="0.449" />
+        <TextView
+            android:id="@+id/weatherDescriptionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Weather:"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cityDescriptionLabel" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/feelsLikeDescriptionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Feels Like:"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tempDescriptionLabel" />
+
+        <TextView
+            android:id="@+id/feelsLikeDescriptionTextView"
+            android:layout_width="278dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="10dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/feelsLikeDescriptionLabel"
+            app:layout_constraintStart_toEndOf="@+id/feelsLikeDescriptionLabel"
+            app:layout_constraintTop_toTopOf="@+id/feelsLikeDescriptionLabel"
+            app:layout_constraintVertical_bias="0.449" />
+
+        <TextView
+            android:id="@+id/weatherDescriptionTextView"
+            android:layout_width="290dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="10dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/weatherDescriptionLabel"
+            app:layout_constraintStart_toEndOf="@+id/weatherDescriptionLabel"
+            app:layout_constraintTop_toTopOf="@+id/weatherDescriptionLabel"
+            app:layout_constraintVertical_bias="0.281" />
+
+        <TextView
+            android:id="@+id/cityDescriptionTextView"
+            android:layout_width="320dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="10dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cityDescriptionLabel"
+            app:layout_constraintStart_toEndOf="@+id/cityDescriptionLabel"
+            app:layout_constraintTop_toTopOf="@+id/cityDescriptionLabel"
+            app:layout_constraintVertical_bias="0.19" />
+
+        <TextView
+            android:id="@+id/tempDescriptionTextView"
+            android:layout_width="250dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="10dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tempDescriptionLabel"
+            app:layout_constraintStart_toEndOf="@+id/tempDescriptionLabel"
+            app:layout_constraintTop_toTopOf="@+id/tempDescriptionLabel"
+            app:layout_constraintVertical_bias="0.367" />
+
+        <TextView
+            android:id="@+id/tempDescriptionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Temperature:"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weatherDescriptionLabel" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--    DESCRIPTION STARTS HERE-->
+
+
+</LinearLayout>
