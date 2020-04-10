@@ -10,7 +10,9 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.databinding.DataBindingUtil
 import com.airbnb.lottie.LottieAnimationView
+import gustavo.projects.app.databinding.ActivityMainBinding
 import gustavo.projects.app.model.OpenWeatherResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,33 +26,14 @@ class MainActivity : AppCompatActivity() {
         const val APP_KEY = "47ac5893a42b55d83cdf65df008e9d57"
     }
 
-    private lateinit var cityEditText: EditText
-    private lateinit var countryEditText: EditText
-    private lateinit var cityDescriptionTextView: TextView
-    private lateinit var weatherDescriptionTextView: TextView
-    private lateinit var tempDescriptionTextView: TextView
-    private lateinit var feelsLikeDescriptionTextView: TextView
-    private lateinit var descriptionPanelLayout : ConstraintLayout
-
-    private lateinit var weatherIcon: LottieAnimationView
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        this.cityEditText = findViewById(R.id.cityEditText)
-        this.countryEditText = findViewById(R.id.countryEditText)
-        this.cityDescriptionTextView = findViewById(R.id.cityDescriptionTextView)
-        this.weatherDescriptionTextView = findViewById(R.id.weatherDescriptionTextView)
-        this.tempDescriptionTextView = findViewById(R.id.tempDescriptionTextView)
-        this.feelsLikeDescriptionTextView = findViewById(R.id.feelsLikeDescriptionTextView)
-        this.descriptionPanelLayout = findViewById(R.id.descriptionPanelLayout)
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
 
-        val infoButton : Button = findViewById(R.id.infoButton)
-
-        this.weatherIcon = findViewById(R.id.weatherIcon)
-
-        infoButton.setOnClickListener(View.OnClickListener { getWeather(it) })
+        binding.infoButton.setOnClickListener(View.OnClickListener { getWeather(it) })
 
     }
 
@@ -60,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             .build()
 
         val service = retrofit.create(OpenWeatherInterface::class.java)
-        val concatenatedCityCountry = cityEditText.text.toString()+","+countryEditText.text.toString()
+        val concatenatedCityCountry =  binding.cityEditText.text.toString()+","+ binding.countryEditText.text.toString()
         val call = service.getCurrentWeatherByCityAndCountry(concatenatedCityCountry, APP_KEY)
 
         call.enqueue(object : Callback<OpenWeatherResponse>{
@@ -76,22 +59,22 @@ class MainActivity : AppCompatActivity() {
                 {
                     val responseWeather = response.body()!!
 
-                    cityDescriptionTextView.text = "${responseWeather.name} (${responseWeather.sys.country})"
-                    weatherDescriptionTextView.text = "${responseWeather.weather[0].main} (${responseWeather.weather[0].description})"
-                    tempDescriptionTextView.text = "${responseWeather.main.temp} C"
-                    feelsLikeDescriptionTextView.text = "${responseWeather.main.feelsLike} C"
+                    binding.cityDescriptionTextView.text = "${responseWeather.name} (${responseWeather.sys.country})"
+                    binding.weatherDescriptionTextView.text = "${responseWeather.weather[0].main} (${responseWeather.weather[0].description})"
+                    binding.tempDescriptionTextView.text = "${responseWeather.main.temp} C"
+                    binding.feelsLikeDescriptionTextView.text = "${responseWeather.main.feelsLike} C"
 
                     when(responseWeather.weather[0].id)
                     {
-                        in 200 .. 232 -> weatherIcon.setAnimation("thunderstorm.json")
-                        in 300 .. 531 -> weatherIcon.setAnimation("rain.json")
-                        in 600 .. 622 -> weatherIcon.setAnimation("snow.json")
-                        in 701 .. 781 -> weatherIcon.setAnimation("mist.json")
-                        in 801 .. 804 -> weatherIcon.setAnimation("cloudy.json")
-                        else -> weatherIcon.setAnimation("clearSky.json")
+                        in 200 .. 232 ->  binding.weatherIcon.setAnimation("thunderstorm.json")
+                        in 300 .. 531 ->  binding.weatherIcon.setAnimation("rain.json")
+                        in 600 .. 622 ->  binding.weatherIcon.setAnimation("snow.json")
+                        in 701 .. 781 ->  binding.weatherIcon.setAnimation("mist.json")
+                        in 801 .. 804 ->  binding.weatherIcon.setAnimation("cloudy.json")
+                        else ->  binding.weatherIcon.setAnimation("clearSky.json")
                     }
 
-                    descriptionPanelLayout.visibility = View.VISIBLE
+                    binding.descriptionPanelLayout.visibility = View.VISIBLE
                 }
             }
 
