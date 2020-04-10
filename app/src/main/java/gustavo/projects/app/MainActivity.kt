@@ -1,8 +1,10 @@
 package gustavo.projects.app
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -48,11 +50,11 @@ class MainActivity : AppCompatActivity() {
 
         this.weatherIcon = findViewById(R.id.weatherIcon)
 
-        infoButton.setOnClickListener(View.OnClickListener { getWeather() })
+        infoButton.setOnClickListener(View.OnClickListener { getWeather(it) })
 
     }
 
-    private fun getWeather() {
+    private fun getWeather(view: View) {
         val retrofit = Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -94,6 +96,10 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
+        //Hide the keyboard
+        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
 }
