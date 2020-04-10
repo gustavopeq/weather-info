@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="weatherDetails"
+            type="gustavo.projects.app.WeatherDetails"/>
+    </data>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -93,7 +100,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:lottie_autoPlay="true"
-                    app:lottie_fileName="rain.json"
+                    app:lottie_fileName="clearSky.json"
                     app:lottie_loop="true"
                     app:lottie_speed="1.25" />
 
@@ -122,6 +129,18 @@
                     app:layout_constraintTop_toBottomOf="@+id/cityDescriptionLabel" />
 
                 <TextView
+                    android:id="@+id/tempDescriptionLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/description_MarginStart"
+                    android:layout_marginTop="20dp"
+                    android:text="Temperature:"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/standard_TextSize"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weatherDescriptionLabel" />
+
+                <TextView
                     android:id="@+id/feelsLikeDescriptionLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -134,32 +153,11 @@
                     app:layout_constraintTop_toBottomOf="@+id/tempDescriptionLabel" />
 
                 <TextView
-                    android:id="@+id/feelsLikeDescriptionTextView"
-                    android:layout_width="278dp"
-                    android:layout_height="24dp"
-                    android:layout_marginStart="10dp"
-                    android:textSize="@dimen/standard_TextSize"
-                    app:layout_constraintBottom_toBottomOf="@+id/feelsLikeDescriptionLabel"
-                    app:layout_constraintStart_toEndOf="@+id/feelsLikeDescriptionLabel"
-                    app:layout_constraintTop_toTopOf="@+id/feelsLikeDescriptionLabel"
-                    app:layout_constraintVertical_bias="0.449" />
-
-                <TextView
-                    android:id="@+id/weatherDescriptionTextView"
-                    android:layout_width="290dp"
-                    android:layout_height="24dp"
-                    android:layout_marginStart="10dp"
-                    android:textSize="@dimen/standard_TextSize"
-                    app:layout_constraintBottom_toBottomOf="@+id/weatherDescriptionLabel"
-                    app:layout_constraintStart_toEndOf="@+id/weatherDescriptionLabel"
-                    app:layout_constraintTop_toTopOf="@+id/weatherDescriptionLabel"
-                    app:layout_constraintVertical_bias="0.281" />
-
-                <TextView
                     android:id="@+id/cityDescriptionTextView"
                     android:layout_width="320dp"
                     android:layout_height="24dp"
                     android:layout_marginStart="10dp"
+                    android:text="@={weatherDetails.cityAndCountry}"
                     android:textSize="@dimen/standard_TextSize"
                     app:layout_constraintBottom_toBottomOf="@+id/cityDescriptionLabel"
                     app:layout_constraintStart_toEndOf="@+id/cityDescriptionLabel"
@@ -167,10 +165,23 @@
                     app:layout_constraintVertical_bias="0.19" />
 
                 <TextView
+                    android:id="@+id/weatherDescriptionTextView"
+                    android:layout_width="290dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="10dp"
+                    android:text="@={weatherDetails.weather}"
+                    android:textSize="@dimen/standard_TextSize"
+                    app:layout_constraintBottom_toBottomOf="@+id/weatherDescriptionLabel"
+                    app:layout_constraintStart_toEndOf="@+id/weatherDescriptionLabel"
+                    app:layout_constraintTop_toTopOf="@+id/weatherDescriptionLabel"
+                    app:layout_constraintVertical_bias="0.281" />
+
+                <TextView
                     android:id="@+id/tempDescriptionTextView"
                     android:layout_width="250dp"
                     android:layout_height="24dp"
                     android:layout_marginStart="10dp"
+                    android:text="@={weatherDetails.temperature}"
                     android:textSize="@dimen/standard_TextSize"
                     app:layout_constraintBottom_toBottomOf="@+id/tempDescriptionLabel"
                     app:layout_constraintStart_toEndOf="@+id/tempDescriptionLabel"
@@ -178,16 +189,16 @@
                     app:layout_constraintVertical_bias="0.367" />
 
                 <TextView
-                    android:id="@+id/tempDescriptionLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/description_MarginStart"
-                    android:layout_marginTop="20dp"
-                    android:text="Temperature:"
-                    android:textColor="#000000"
+                    android:id="@+id/feelsLikeDescriptionTextView"
+                    android:layout_width="278dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="10dp"
+                    android:text="@={weatherDetails.feelsLike}"
                     android:textSize="@dimen/standard_TextSize"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/weatherDescriptionLabel" />
+                    app:layout_constraintBottom_toBottomOf="@+id/feelsLikeDescriptionLabel"
+                    app:layout_constraintStart_toEndOf="@+id/feelsLikeDescriptionLabel"
+                    app:layout_constraintTop_toTopOf="@+id/feelsLikeDescriptionLabel"
+                    app:layout_constraintVertical_bias="0.449" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
